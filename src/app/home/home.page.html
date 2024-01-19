@@ -8,29 +8,23 @@
   [loop]="true"
   [pagination]="true"
   >
-    <swiper-slide>
-      <h1 class="red-title">Titulo 1</h1>
-      <p>
-        Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impreso
-      </p>
-      <img src="https://www.nationalgeographic.com.es/medio/2022/12/12/aguila-2_d7d2206b_221212153725_310x310.jpg"/>
-      <p>Swipe para continuar</p>
+    <swiper-slide *ngFor="let slide of slides; let i = index">
+      <h1 class="red-title">{{slide.title}}</h1>
+      <p class={{slide.class}} [innerHTML]="slide.description"></p>
+      <img src={{slide.image}}/>
+      <p>{{slide.help_text}}</p>
+      <p *ngIf=" i == 1">i: {{i}} estoy en el segundo slide</p>
+      <ion-button *ngIf="i == 3">Hola mundo</ion-button>
+      <div *ngIf="i == 0">
+        <h1>{{slide.title}}</h1>
+        <img src={{slide.image}}/>
+      </div>
+      <div *ngIf="i == 1">
+        <h1>{{slide.description}}</h1>
+        <p>{{slide.help_text}}</p>
+      </div>
+  
     </swiper-slide>
-    <swiper-slide>
-      <h1 class="red-title">Titulo 2</h1>
-      <p>
-        Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impreso
-      </p>
-      <img src="https://www.nationalgeographic.com.es/medio/2022/12/12/aguila-2_d7d2206b_221212153725_310x310.jpg"/>
-      <p>Swipe para continuar</p>
-    </swiper-slide>
-    <swiper-slide>
-      <h1 class="red-title">Titulo 3</h1>
-      <p>
-        Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impreso
-      </p>
-      <img src="https://www.nationalgeographic.com.es/medio/2022/12/12/aguila-2_d7d2206b_221212153725_310x310.jpg"/>
-      <p>Swipe para continuar</p>
-    </swiper-slide>
+    
   </swiper-container>
 </ion-content>
