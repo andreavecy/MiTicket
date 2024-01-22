@@ -39,6 +39,9 @@ export class IntroPage  {
 
   constructor() { }
 
-
+  ionViewDidEnter() {
+    console.log("Ya entre y vi la intro");
+    // Vamos a guardar en el storage que ya vio la intro
+  }
 
 }
