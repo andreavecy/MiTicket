@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { AuthService } from '../services/auth.service';
+import { NavController } from '@ionic/angular';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -8,7 +9,19 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class LoginPage implements OnInit {
   loginForm: FormGroup; // declare the loginForm property
-  constructor(private formBuilder: FormBuilder) {
+  validation_messages = {
+    email: [
+      { type: "required", message: "El Email es obligatorio." },
+      { type: "pattern", message: "El Email ingresado no es valido." }
+    ]
+    //Crear validaciones para el password
+  }
+  loginMessage: any;
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private navCtrl: NavController
+    ) {
     this.loginForm = this.formBuilder.group({
       email: new FormControl(
         "",
@@ -19,6 +32,7 @@ export class LoginPage implements OnInit {
           )
         ])
       )
+      //Crear validaciones para el password
     })
    }
 
@@ -27,6 +41,12 @@ export class LoginPage implements OnInit {
 
   login(login_data: any){
     console.log(login_data);
+    this.authService.loginUser(login_data).then(res => {
+      this.loginMessage = res;
+      this.navCtrl.navigateForward('/home');
+    }).catch(err => {
+      this.loginMessage = err;
+    });
   }
 
 }

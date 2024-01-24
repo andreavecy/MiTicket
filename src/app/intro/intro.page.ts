@@ -5,7 +5,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./intro.page.scss'],
 })
 export class IntroPage  {
-
   slides = [
     {
       title: "Welcome to the Docs!",

@@ -20,14 +20,6 @@
       <p [innerHTML]="slide.help_text"></p>
       <p *ngIf=" i == 1">i: {{i}} estoy en el segundo slide</p>
       <ion-button *ngIf="i == 3">Hola mundo</ion-button>
-      <div *ngIf="i == 0">
-        <h1>{{slide.title}}</h1>
-        <img src={{slide.image}}/>
-      </div>
-      <div *ngIf="i == 1">
-        <h1>{{slide.description}}</h1>
-        <p>{{slide.help_text}}</p>
-      </div>
   
     </swiper-slide>
     
