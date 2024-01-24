@@ -7,6 +7,11 @@
   <swiper-container
   [loop]="true"
   [pagination]="true"
+  [effect]="'coverflow'"
+  [coverflowEffect]="{
+    'rotate': 40,
+    'slideShadows': true
+  }"
   >
     <swiper-slide *ngFor="let slide of slides; let i = index">
       <h1 class="red-title">{{slide.title}}</h1>
