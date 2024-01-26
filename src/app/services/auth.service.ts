@@ -19,4 +19,8 @@ export class AuthService {
       }
     });
   }
+
+  registerUser(){
+    //TODO
+  }
 }
