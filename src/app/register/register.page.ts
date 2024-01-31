@@ -60,4 +60,7 @@ export class RegisterPage implements OnInit {
     //crear el servicio de registro
   }
 
+  goToLogin(){
+    this.navCtrl.navigateBack("/login");
+  }
 }
